@@ -113,6 +113,10 @@ function articleMaker(obj){
   const paraThree = document.createElement('p');
   const expandButton = document.createElement('span');
 
+  expandButton.classList.add('expandButton');
+  article.classList.add('article');
+  date.classList.add('date');
+
   article.appendChild(articleTitle);
   article.appendChild(paraOne);
   article.appendChild(paraTwo);
@@ -124,10 +128,12 @@ function articleMaker(obj){
   paraOne.textContent = obj.firstParagraph;
   paraTwo.textContent = obj.secondParagraph;
   paraThree.textContent = obj.thirdParagraph;
+  expandButton.textContent = '+'
 
-  expandButton.addEventListener('click', () =>{
+  expandButton.addEventListener('click', () => {
     article.classList.toggle('article-open');
   });
+
   return article;
 };
 // console.log(articleMaker());
@@ -153,12 +159,14 @@ const greenPeople = {
   secondParagraph: "Like to eat hubba bubba bubblegum",
   thirdParagraph: "Scared of willy wonka and his chocolate factory"
 };
+
 data.push(greenPeople);
 
 const articleElements = data.forEach(elem  => {
-  const article = articleMaker(elem);
-  articleContainer.appendChild(article);
+  const articleLoop = articleMaker(elem);
+  articleContainer.appendChild(articleLoop);
 });
+
 /*
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
