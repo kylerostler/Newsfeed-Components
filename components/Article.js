@@ -146,6 +146,15 @@ function articleMaker(obj){
 */
 const articleContainer = document.querySelector('div.articles');
 
+const greenPeople = {
+  title: "Aliens are scary",
+  date : "2022-41st millenium",
+  firstParagraph: "Dangerous, blast on site",
+  secondParagraph: "Like to eat hubba bubba bubblegum",
+  thirdParagraph: "Scared of willy wonka and his chocolate factory"
+};
+data.push(greenPeople);
+
 const articleElements = data.forEach(elem  => {
   const article = articleMaker(elem);
   articleContainer.appendChild(article);
@@ -154,3 +163,4 @@ const articleElements = data.forEach(elem  => {
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
