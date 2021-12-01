@@ -94,6 +94,7 @@ const data = [
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
 
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -102,15 +103,72 @@ const data = [
 
     <span class="expandButton">+</span>
   </div>
+*/
+function articleMaker(obj){
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const date = document.createElement('p');
+  const paraOne = document.createElement('p');
+  const paraTwo = document.createElement('p');
+  const paraThree = document.createElement('p');
+  const expandButton = document.createElement('span');
 
+  expandButton.classList.add('expandButton');
+  article.classList.add('article');
+  date.classList.add('date');
+
+  article.appendChild(articleTitle);
+  article.appendChild(paraOne);
+  article.appendChild(paraTwo);
+  article.appendChild(paraThree);
+  article.appendChild(expandButton);
+
+  articleTitle.textContent = obj.title;
+  date.textContent = obj.date;
+  paraOne.textContent = obj.firstParagraph;
+  paraTwo.textContent = obj.secondParagraph;
+  paraThree.textContent = obj.thirdParagraph;
+  expandButton.textContent = '+'
+
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  });
+
+  return article;
+};
+// console.log(articleMaker());
+/*
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
+*/
 
+/*
   Step 3: Don't forget to return something from your function!
+*/
 
+/*
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
+*/
+const articleContainer = document.querySelector('div.articles');
 
+const greenPeople = {
+  title: "Aliens are scary",
+  date : "2022-41st millenium",
+  firstParagraph: "Dangerous, blast on site",
+  secondParagraph: "Like to eat hubba bubba bubblegum",
+  thirdParagraph: "Scared of willy wonka and his chocolate factory"
+};
+
+data.push(greenPeople);
+
+const articleElements = data.forEach(elem  => {
+  const articleLoop = articleMaker(elem);
+  articleContainer.appendChild(articleLoop);
+});
+
+/*
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
